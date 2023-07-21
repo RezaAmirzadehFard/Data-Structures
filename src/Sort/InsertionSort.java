@@ -1,9 +1,18 @@
 package Sort;
 
-public class Sort {
-    // insertion sort
-    // O( n^2 )
-    // it's fast sorting for little amount ( but heavy sort for big amount of data )
+/*
+ *  Insertion sort
+ *  Time complexity : O( n^2 )
+ *  It's fast sorting for little amount ( but heavy sort for big amount of data )
+ *  Author: Reza Amirzadeh Fard
+ */
+
+public class InsertionSort {
+
+    public static void main(String[] args) {
+    }
+
+    // Insertion sort with increasing order
     static int[] insertionSort(int[] array){
         // length of array
         int l = array.length;
@@ -23,8 +32,24 @@ public class Sort {
         return array;
     }
 
-    // insertion sort with display steps
-    static void insertionSortDis(int[] array){
+    // Insertion sort with decreasing order
+    // Exercise 2.1-2 (CLRS)
+    static int[] insertionDec(int[] array){
+        int l = array.length;
+        for (int j = 1; j < l; j++){
+            int key = array[j];
+            int i = j - 1;
+            while( i >= 0 && array[i] < key){
+                array[i+1] = array[i];
+                i = i-1;
+            }
+            array[i+1] = key;
+        }
+        return array;
+    }
+
+    // Insertion sort within display step by step
+    static void insertionSortDisplay(int[] array){
         int l = array.length;
         for (int j = 1; j < l ; j ++){
             int key = array[j];
