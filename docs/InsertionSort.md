@@ -1,2 +1,1 @@
 # Insertion Sort
- ***
