@@ -3,7 +3,13 @@ package Sort;
 /*
  *  Insertion sort
  *  Time complexity : O( n^2 )
+ *  It is an in place sorting algorithm. (in-place: no need for extra space)
  *  It's fast sorting for little amount ( but heavy sort for big amount of data )
+ *  Insertion sort like a card play game.
+ *  If you're beginning from right to left -
+ *  each time take a card from table and compare with left card
+ *  and insert current card in suitable place.
+ *
  *  Author: Reza Amirzadeh Fard
  */
 
