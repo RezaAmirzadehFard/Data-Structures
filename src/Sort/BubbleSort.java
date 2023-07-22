@@ -11,16 +11,18 @@ package Sort;
  *
  *  Author: Reza Amirzadeh Fard
  */
+
 public class BubbleSort {
     public static void main(String[] args) {
         int[] a = {8,7,6,5,3,2,1};
-        printArray(bubbleSort(a));
+        printArray(bubbleSortDisplay(a));
     }
 
+    // Bubble sort with increasing order
     static int[] bubbleSort(int[] array){
         int l = array.length;
         for (int i = 0; i < l; i++){
-            for (int j = l-1; j >= i+1; j--){
+            for (int j = l; j > i + 1 ; j--){
                 if (array[j] < array[j-1]){
                     int temp = array[j];
                     array[j] = array[j-1];
@@ -30,6 +32,23 @@ public class BubbleSort {
         }
         return array;
     }
+
+    static int[] bubbleSortDisplay(int[] array){
+        int l = array.length;
+        for (int i = 0; i < l; i++){
+            for (int j = l-1; j >= i+1; j--){
+                if (array[j] < array[j-1]){
+                    int temp = array[j];
+                    array[j] = array[j-1];
+                    array[j-1] = temp;
+                    printArray(array);
+                }
+            }
+        }
+        return array;
+    }
+
+
     static void printArray(int[] array){
         for(int a: array)
             System.out.print(" " + a);
