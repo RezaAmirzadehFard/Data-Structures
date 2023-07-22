@@ -3,6 +3,8 @@ package Sort;
 /*
  *  Bubble sort
  *  Time complexity : O( n^2 )
+ *  Solve with incremental approach.
+ *
  *  It is an in-place sorting algorithm. (in-place: no need for extra space)
  *  It's fast sorting for little amount ( but heavy sort for big amount of data )
  *
