@@ -5,8 +5,8 @@ package Sort;
  *  Time complexity : O( n^2 )
  *  Solve with incremental approach.
  *
- *  Best-Case Running Time : O( n )  -> it's occur when array is sorted, then condition of while loop doesn't execute -
- *  and key stay in own place.
+ *  Best-Case Running Time : O( n ) -> it's occur when array is sorted, then condition of while loop doesn't execute -
+ *  and key stay in its place.
  *  Worst-Case Running Time : O( n^2 ) -> it's occur when array is sorted reverse order (decreasing order).
  *  Average-Case Running Time: O( n^2 )
  *
@@ -25,6 +25,15 @@ package Sort;
 public class InsertionSort {
 
     public static void main(String[] args) {
+        int[] intArray = {8,3,2,4,9,1,6,2,1,7,8};
+        System.out.print("Input array:");
+        printArray(intArray);
+        System.out.print("Insertion sort with increasing order :");
+        printArray(insertionSort(intArray));
+        System.out.print("Insertion sort with decreasing order :");
+        printArray(insertionSortDec(intArray));
+        System.out.println("===========================");
+        insertionSortDisplay(intArray);
     }
 
     // Insertion sort with increasing order
@@ -50,7 +59,7 @@ public class InsertionSort {
 
     // Insertion sort with decreasing order
     // Exercise 2.1-2 (CLRS)
-    static int[] insertionDec(int[] array){
+    static int[] insertionSortDec(int[] array){
         int l = array.length;
         for (int j = 1; j < l; j++){
             int key = array[j];
@@ -73,11 +82,11 @@ public class InsertionSort {
             while (i >= 0 && array[i] > key){
                 array[i+1] = array[i];
                 i = i - 1;
-                System.out.printf("a[%d] -> a[%d]: ",i+1,i);
+                System.out.printf("a[%d] -> a[%d]:\t",i+1,i);
                 printArray(array);
             }
             array[i+1] = key;
-            System.out.printf("key -> a[%d]: ",i+1);
+            System.out.printf("key  -> a[%d]:\t",i+1);
             printArray(array);
         }
         System.out.println("\nResult of sorting with insertion sort:");
