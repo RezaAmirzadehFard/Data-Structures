@@ -5,11 +5,16 @@ package Sort;
  *  Time complexity : O( n^2 )
  *  Solve with incremental approach.
  *
- *  It is an in-place sorting algorithm. (in-place: no need for extra space)
- *  It's fast sorting for little amount ( but heavy sort for big amount of data )
+ *  Best-Case Running Time :
+ *  Worst-Case Running Time :
+ *  Average-Case Running Time:
  *
- *  As name of algorithm shows in each cycle of nested loop
- *  one element set into a bubble and goes up, when reach the desired location it's bursting. :)
+ *  It's an in-place sorting algorithm. ( in-place: no need for extra space )
+ *  It's fast sorting for little amounts but slow sorting for huge amounts of data.
+ *
+ *  Explain :
+ *  As name of algorithm shows in each cycle of nested loop -
+ *  one element set into a bubble and goes up (close to first of array), when reach the desired location it's bursting. :)
  *
  *  Author: Reza Amirzadeh Fard
  */

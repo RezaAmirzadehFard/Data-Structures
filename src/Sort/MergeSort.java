@@ -9,6 +9,9 @@ package Sort;
  *  2.Conquer : solve subproblems in recursively manner, to reach basic condition then solve that straightForward.
  *  3.Combine : combine solutions of subproblems to obtain solution of original problem.
  *
+ *  notice: The recursion bottoms out when the subproblem to be sorted has length 1, -
+ *  in which case there is no work to be done, since every sequence of length 1 is already in sorted order.
+ *
  *  Best-Case Running Time : O(  ) -> it's occur when
  *  Worst-Case Running Time : O(  ) -> it's occur when
  *  Average-Case Running Time: O(  )
@@ -35,33 +38,49 @@ public class MergeSort {
      * e.g = 5 -> {0,1,2,3,4} -> [p = 0 , r = 4, q = 2] -> left array: q-p+1 = 2-0+1 = 3 -> {0,1,2}, right array -> r-p = 4-2= 2 -> {3,4}
      */
 
+    // Parameter p is start index of the array that we assume zero in first invokes.
+    // Parameter r is last index of the array ( array.length - 1).
     static int[] mergeSort(int[] array, int p, int r){
+        // if statement checks at least we have one element in array.
         if (p < r){
+            // find a point for break point of problem to subproblems.
             int q = (p+r)/2 ;
-            mergeSort(array,p,q);
-            mergeSort(array,q+1,r);
-            merge(array, p, q, r);
+            // Divide step : divide into two array[p..q], array[q+1..r] subproblems.
+            // Conquer step : solve two subproblems recursively by calling its mergeSort method.
+            // This two subproblem return sorted array.
+            mergeSort(array,p,q);                                                                                       // T(n/2)
+            mergeSort(array,q+1,r);                                                                                  // T(n/2)
+            // The combine step here occur with an auxiliary method names merge.
+            // Returned sorted arrays merge here.
+            merge(array, p, q, r);                                                                                      // theta of n (ref: for-start-index-k)
         }
         return array;
-    }
+    }                                                                                                                   // T(n) = 2T(n/2) + theta(n)
+
 
     static void merge(int[] array, int p, int q, int r){
-        int n1 = q - p + 1;
-        int n2 = r - q;
-        int[] leftArray = new int[n1+1];
-        int[] rightArray = new int[n2+1];
-        for (int i = 0; i < n1; i++) {
+        // Compute length of subarray array[p..q]
+        int n1 = q - p + 1;                                                                                             // const
+        // Compute length of subarray array[q+1..r]
+        int n2 = r - q;                                                                                                 // const
+        // Create two arrays with one extra place for holding sentinel
+        int[] leftArray = new int[n1+1];                                                                                // const
+        int[] rightArray = new int[n2+1];                                                                               // const
+        // Copy elements of array[p..q] to leftArray
+        for (int i = 0; i < n1; i++) {                                                                                  // theta of n1
             leftArray[i] = array[p+i];
         }
-        for (int j = 0; j < n2; j++) {
+        // Copy elements of array[q+1..r] to rightArray
+        for (int j = 0; j < n2; j++) {                                                                                  // theta of n2
             rightArray[j] = array[j+q+1];
         }
-        leftArray[n1] = Integer.MAX_VALUE;
-        rightArray[n2] = Integer.MAX_VALUE;
+        // Sentinels
+        leftArray[n1] = Integer.MAX_VALUE;                                                                              // const
+        rightArray[n2] = Integer.MAX_VALUE;                                                                             // const
 
         int i = 0;
         int j = 0;
-        for(int k = p; k <= r; k++){
+        for(int k = p; k <= r; k++){                                                                                    // n = r - p + 1 => theta of n
             if (leftArray[i] <= rightArray[j]) {
                 array[k] = leftArray[i];
                 i++;
@@ -70,7 +89,7 @@ public class MergeSort {
                 j++;
             }
         }
-    }
+    }                                                                                                                   // theta(n1 + n2) + theta(n) = theta(2n) = theta(n)
 
     static void mergeDisplay(int[] array, int p, int q, int r){
         int n1 = q - p + 1;

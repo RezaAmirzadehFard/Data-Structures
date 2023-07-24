@@ -9,7 +9,7 @@ package Sort;
  *  Average-Case Running Time: O( n^2 )
  *
  *  It's an in-place sorting algorithm. ( in-place: no need for extra space )
- *  It's fast sorting for little amount ( but slow sorting for huge amounts of data )
+ *  It's fast sorting for little amounts but slow sorting for huge amounts of data.
  *
  *  Explain :
  *
