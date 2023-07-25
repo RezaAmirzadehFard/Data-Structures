@@ -1,36 +1,46 @@
 package Sort;
 /*
- *  Merge sort
- *  Time complexity : O( nlgn )
+ *  Merge sort:
+ *  Time complexity: O(nlgn)
  *  Solve with divide and conquer approach.
  *
- *  Divide and conquer approach include three step:
- *  1.Divide : break problem to some subproblems that like original problem in smaller size.
- *  2.Conquer : solve subproblems in recursively manner, to reach basic condition then solve that straightForward.
- *  3.Combine : combine solutions of subproblems to obtain solution of original problem.
+ *  Divide and conquer approach include three steps:
+ *  1.Divide: break problem to some subproblems that like the original problem in smaller size.
+ *  2.Conquer: solve subproblems in a recursive manner, to reach basic condition then solve that straightForwardly.
+ *  3.Combine: combine solutions of subproblems to obtain a solution of original problem.
  *
- *  notice: The recursion bottoms out when the subproblem to be sorted has length 1, -
+ *  Notice: The recursion bottoms out when the subproblem to be sorted has length 1, -
  *  in which case there is no work to be done, since every sequence of length 1 is already in sorted order.
  *
- *  Best-Case Running Time : O(  ) -> it's occur when
- *  Worst-Case Running Time : O(  ) -> it's occur when
- *  Average-Case Running Time: O(  )
+ *  Best-Case Running Time: O(nlgn)
+ *  Worst-Case Running Time: O(nlgn)
+ *  Average-Case Running Time: O(nlgn)
+ *
+ *  Notice: when the size of an array (n) that should sort with mergeSort is bigger than 1 (n>1) in all circumstances
+ *  case time complexity is O(nlgn).
  *
  *  It is not an in-place sorting algorithm. (in-place: no need for extra space)
  *  It's good sorting for huge amounts of data.
  *
- *  Explain :
+ *  Explain:
+ *  Consider you have two piles of sorted cards (mergeSort(array,p,q),mergeSort(array,q+1,r)).
+ *  We want to combine (merge) these two piles to one output pile that sorted.
+ *  In each recursion that we have with calling mergeSort inside itself, we break a problem
+ *  and repeat these steps until reach to array length 1 (that sorted); then it's ready for merge operation.
  *
  *  Author: Reza Amirzadeh Fard
  */
 public class MergeSort {
+
     public static void main(String[] args) {
         int[] a = {9,8,7,6,5,4,3,2};
-        printArray(mergeSort(a,0,a.length-1));
+        // Exercise 2.3-1 (CLRS)
+        int[] b = {3,41,52,26,38,57,9,49};
+        printArray(mergeSort(b,0,b.length-1));
         //mergeSortDisplay(a,0,a.length-1);
     }
 
-    /* Example of indices in two condition:
+    /* Example of indices in two conditions:
      * Set Parentheses demonstrates an array that include indices of its home.
      * Length of array is even:
      * e.g = 4 -> {0,1,2,3} -> [p = 0 , r = 3, q = 1] -> left array: q-p+1 = 1-0+1 = 2 -> {0,1}, right array -> r-q = 3-1 = 2 -> {2,4}
@@ -38,21 +48,22 @@ public class MergeSort {
      * e.g = 5 -> {0,1,2,3,4} -> [p = 0 , r = 4, q = 2] -> left array: q-p+1 = 2-0+1 = 3 -> {0,1,2}, right array -> r-p = 4-2= 2 -> {3,4}
      */
 
-    // Parameter p is start index of the array that we assume zero in first invokes.
-    // Parameter r is last index of the array ( array.length - 1).
+    // Parameter p is the start index of the array that we assume zero in first invokes.
+    // Parameter r is the last index of the array ( array.length - 1).
     static int[] mergeSort(int[] array, int p, int r){
-        // if statement checks at least we have one element in array.
+        int i =0;
+        // if a statement checks at least we have one element in an array.
         if (p < r){
             // find a point for break point of problem to subproblems.
             int q = (p+r)/2 ;
-            // Divide step : divide into two array[p..q], array[q+1..r] subproblems.
-            // Conquer step : solve two subproblems recursively by calling its mergeSort method.
-            // This two subproblem return sorted array.
+            // Divide step: divide into two array[p..q], array[q+1..r] subproblems.
+            // Conquer step: solve two subproblems recursively by calling its mergeSort method.
+            // These two subproblems return sorted an array.
             mergeSort(array,p,q);                                                                                       // T(n/2)
             mergeSort(array,q+1,r);                                                                                  // T(n/2)
-            // The combine step here occur with an auxiliary method names merge.
+            // The combine step here occurs with an auxiliary method names merge.
             // Returned sorted arrays merge here.
-            merge(array, p, q, r);                                                                                      // theta of n (ref: for-start-index-k)
+            merge(array, p, q, r);                                                                                      // theta of n (ref:for-start-index-k)
         }
         return array;
     }                                                                                                                   // T(n) = 2T(n/2) + theta(n)

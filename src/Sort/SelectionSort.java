@@ -1,14 +1,14 @@
 package Sort;
 /*
- *  Selection sort
- *  Time complexity : O( n^2 )
+ *  Selection sort:
+ *  Time complexity: O(n^2)
  *  Solve with incremental approach.
  *
- *  Best-Case Running Time : O( n^2 )
- *  Worst-Case Running Time : O( n^2 )
- *  Average-Case Running Time: O( n^2 )
+ *  Best-Case Running Time : O(n^2)
+ *  Worst-Case Running Time : O(n^2)
+ *  Average-Case Running Time: O(n^2)
  *
- *  It's an in-place sorting algorithm. ( in-place: no need for extra space )
+ *  It's an in-place sorting algorithm. (in-place: no need for extra space)
  *  It's fast sorting for little amounts but slow sorting for huge amounts of data.
  *
  *  Explain :

@@ -1,20 +1,20 @@
 package Sort;
 
 /*
- *  Bubble sort
- *  Time complexity : O( n^2 )
+ *  Bubble sort:
+ *  Time complexity: O(n^2)
  *  Solve with incremental approach.
  *
- *  Best-Case Running Time :
- *  Worst-Case Running Time :
+ *  Best-Case Running Time:
+ *  Worst-Case Running Time:
  *  Average-Case Running Time:
  *
- *  It's an in-place sorting algorithm. ( in-place: no need for extra space )
+ *  It's an in-place sorting algorithm. (in-place: no need for extra space)
  *  It's fast sorting for little amounts but slow sorting for huge amounts of data.
  *
- *  Explain :
- *  As name of algorithm shows in each cycle of nested loop -
- *  one element set into a bubble and goes up (close to first of array), when reach the desired location it's bursting. :)
+ *  Explain:
+ *   As the name of the algorithm shows in each cycle of nested loop -
+ *  one element set into a bubble and goes up (close to first of an array), when reach the desired location it's bursting. :)
  *
  *  Author: Reza Amirzadeh Fard
  */
