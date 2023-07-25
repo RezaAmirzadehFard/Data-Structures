@@ -36,7 +36,7 @@ public class MergeSort {
         int[] a = {9,8,7,6,5,4,3,2};
         // Exercise 2.3-1 (CLRS)
         int[] b = {3,41,52,26,38,57,9,49};
-        printArray(mergeSort(b,0,b.length-1));
+        printArray(mergeSort(a,0,a.length-1));
         //mergeSortDisplay(a,0,a.length-1);
     }
 
@@ -63,7 +63,7 @@ public class MergeSort {
             mergeSort(array,q+1,r);                                                                                  // T(n/2)
             // The combine step here occurs with an auxiliary method names merge.
             // Returned sorted arrays merge here.
-            merge(array, p, q, r);                                                                                      // theta of n (ref:for-start-index-k)
+            merge2(array, p, q, r);                                                                                      // theta of n (ref:for-start-index-k)
         }
         return array;
     }                                                                                                                   // T(n) = 2T(n/2) + theta(n)
@@ -115,7 +115,7 @@ public class MergeSort {
         System.out.println();
         System.out.print(" Right part:");
         for (int j = 0; j < n2; j++) {
-            rightArray[j] = array[j+q+1];
+            rightArray[j] = array[q+1+j];
             System.out.print(" "+ rightArray[j]);
         }
         System.out.println();
@@ -135,6 +135,37 @@ public class MergeSort {
         }
         System.out.print(" Merge left and right parts:");
         printArray(array);
+    }
+
+    // TODO: incomplete
+    // merge without sentinel
+    static void merge2(int array[], int p, int q, int r){
+        int n1 = q - p + 1;
+        int n2 = r - q;
+
+        int[] leftArray = new int[n1];
+        int[] rightArray = new int[n2];
+
+        for(int i = 0; i < n1; i++){
+            leftArray[i] = array[p+i];
+        }
+        for (int j = 0; j < n2; j++){
+            rightArray[j] = array[q+1+j];
+        }
+
+        int i = 0;
+        int j = 0;
+        int leftFlag = 0;
+        int rightFlag = 0;
+        for(int k = p; k <= r; k++){
+            if (leftArray[i] <= rightArray[j]) {
+                array[k] = leftArray[i];
+                i++;
+            } else {
+                array[k] = rightArray[j];
+                j++;
+            }
+        }
     }
 
     static void printArray(int[] array){

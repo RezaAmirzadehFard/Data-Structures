@@ -45,7 +45,7 @@ public class InsertionSort {
         for (int j = 1; j < l ; j ++){                                                                                  // n
             int key = array[j];                                                                                         // n-1
             int i = j - 1;                                                                                              // n-1
-            // insert left element of a key to next home if satisfy condition
+            // insert the left element of a key to next home if satisfy condition
             // and also do this to achieve first of an array
             while (i >= 0 && array[i] > key){                                                                           // sigma(j=2 to n) t_j
                 array[i+1] = array[i];                                                                                  // sigma(j=2 to n) t_j-1
@@ -91,6 +91,21 @@ public class InsertionSort {
         }
         System.out.println("\nResult of sorting with insertion sort:");
         printArray(array);
+    }
+
+
+    static boolean recursiveInsertionSort(int[] array, int n){
+        if( n <= 1)
+            return false;
+        recursiveInsertionSort(array, n-1);
+        int key = array[n-1];
+        int i = n - 2;
+        while( i >= 0 && array[i] > key ){
+            array[i +1] = array[i];
+            i--;
+        }
+        array[i+1] = key;
+        return false;
     }
 
     static void printArray(int[] array){
