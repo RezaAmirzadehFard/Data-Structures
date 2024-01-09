@@ -93,7 +93,7 @@ public class InsertionSort {
         printArray(array);
     }
 
-
+    // Exercise 2.3-4 (CLRS)
     static boolean recursiveInsertionSort(int[] array, int n){
         if( n <= 1)
             return false;
